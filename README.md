@@ -1,3 +1,3 @@
 # ansible_hw
 
-Ansible HomeWork for the EPAM course
+Evgenii Kliuchnikov Ansible HomeWork for the EPAM course
