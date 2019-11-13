@@ -1,0 +1,48 @@
+---
+- name: test
+  hosts: devtools_servers
+  become: yes
+  gather_facts: true
+
+  tasks:
+  
+  - name: Install nginx on RedHat systems
+    yum: name=nginx state=latest update_cache=yes
+    when: ansible_distribution == "RedHat"
+
+  - name: Install nginx on Ubuntu systems
+    apt: name=nginx update_cache=yes
+    when: ansible_distribution == "Ubuntu"
+
+  - name: Enable nginx autostart
+    service: name=nginx state=started enabled=yes
+
+  - name: Stop Nginx
+    service: name=nginx state=stopped
+    tags: [ never, stop ]
+
+  - name: Start Nginx
+    service: name=nginx state=started
+    tags: [ never, start ]
+
+  - name: Restart Nginx
+    service: name=nginx state=restarted
+    tags: [ never, restart ]
+
+  - name: Remove nginx on RedHat systems
+    yum: name=nginx state=absent
+    when: ansible_distribution == "RedHat"
+    tags: [ never, remove ]
+
+  - name: Remove nginx on Ubuntu systems 
+    apt: name=nginx state=absent
+    when: ansible_distribution == "Ubuntu"
+    tags: [ never, remove ]
+
+  - name: Enable nginx autostart on Systems
+    service: name=nginx enabled=yes
+    tags: [ never, enable ]
+
+  - name: Disable nginx autostart on Systems
+    service: name=nginx enabled=no
+    tags: [ never, disable ]

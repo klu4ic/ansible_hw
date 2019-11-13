@@ -1,0 +1,43 @@
+---
+- name: test
+  hosts: devtools_servers
+  become: yes
+  gather_facts: true
+
+  tasks:
+  
+  - name: Install archivators on CentOS
+    yum: name={{ item }} state=latest update_cache=yes
+    loop: 
+       - zip
+       - unzip
+       - gzip
+       - nano
+    when: ansible_distribution == "RedHat"
+
+  - name: Install archivators on Ubuntu
+    apt: name={{ item }} state=latest update_cache=yes
+    loop:
+       - zip
+       - unzip
+       - gzip
+       - nano
+    when: ansible_distribution == "Ubuntu"
+
+
+  - name: Remove archivators from Ubuntu
+    apt: name={{ item }} state=absent
+    loop:
+       - unzip
+       - nano
+    when: ansible_distribution == "Ubuntu"
+    tags: [ never, remove ]
+
+
+  - name: Remove archivators from RedHat
+    yum: name={{ item }} state=absent
+    loop:
+       - unzip
+       - nano
+    when: ansible_distribution == "RedHat"
+    tags: [ never, remove ]
