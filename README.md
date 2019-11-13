@@ -1,3 +1,3 @@
 # ansible_hw
 
-Ansible HoomeWork for the EPAM course
+Ansible HomeWork for the EPAM course
