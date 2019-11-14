@@ -1,0 +1,19 @@
+- name: Install archivators on CentOS
+  yum: name={{ item }} state=latest update_cache=yes
+  loop:
+     - zip
+     - unzip
+     - gzip
+     - nano
+  when: ansible_distribution == "RedHat"
+  tags: [ never, install ]
+
+- name: Install archivators on Ubuntu
+  apt: name={{ item }} state=latest update_cache=yes
+  loop:
+     - zip
+     - unzip
+     - gzip
+     - nano
+  when: ansible_distribution == "Ubuntu"
+  tags: [ never, install ]

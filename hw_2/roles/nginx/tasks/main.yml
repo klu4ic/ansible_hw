@@ -1,0 +1,24 @@
+---
+# tasks file for nginx
+
+# Install Nginx
+- include: install_nginx.yml
+
+# Copy configs & index to Nginx
+- include: copy_nginx_files.yml 
+
+# Remove Nginx
+- include: remove_nginx.yml
+
+# Add Nginx to Autoboot
+- include: enable_nginx.yml
+
+# Remove Nginx from Autoboot
+- include: disable_nginx.yml
+
+# Start Nginx Service
+- include: start_nginx.yml
+
+# Stop Nginx Service
+- include: stop_nginx.yml
+

@@ -1,0 +1,31 @@
+
+PLAY [test] *************************************************************************************************************************************************
+
+TASK [Gathering Facts] **************************************************************************************************************************************
+ok: [aws_redhat]
+ok: [aws_ubuntu]
+
+TASK [tools : Install archivators on CentOS] ****************************************************************************************************************
+skipping: [aws_ubuntu] => (item=zip) 
+skipping: [aws_ubuntu] => (item=unzip) 
+skipping: [aws_ubuntu] => (item=gzip) 
+skipping: [aws_ubuntu] => (item=nano) 
+changed: [aws_redhat] => (item=zip)
+ok: [aws_redhat] => (item=unzip)
+ok: [aws_redhat] => (item=gzip)
+changed: [aws_redhat] => (item=nano)
+
+TASK [tools : Install archivators on Ubuntu] ****************************************************************************************************************
+skipping: [aws_redhat] => (item=zip) 
+skipping: [aws_redhat] => (item=unzip) 
+skipping: [aws_redhat] => (item=gzip) 
+skipping: [aws_redhat] => (item=nano) 
+changed: [aws_ubuntu] => (item=zip)
+ok: [aws_ubuntu] => (item=unzip)
+ok: [aws_ubuntu] => (item=gzip)
+changed: [aws_ubuntu] => (item=nano)
+
+PLAY RECAP **************************************************************************************************************************************************
+aws_redhat                 : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+aws_ubuntu                 : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

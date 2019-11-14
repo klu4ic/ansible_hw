@@ -1,0 +1,18 @@
+- name: Remove archivators from Ubuntu
+  apt: name={{ item }} state=absent
+  loop:
+     - unzip
+     - nano
+     - zip
+  when: ansible_distribution == "Ubuntu"
+  tags: [ never, remove ]
+
+
+- name: Remove archivators from RedHat
+  yum: name={{ item }} state=absent
+  loop:
+     - unzip
+     - nano
+     - zip
+  when: ansible_distribution == "RedHat"
+  tags: [ never, remove ]

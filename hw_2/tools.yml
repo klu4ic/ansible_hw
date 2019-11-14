@@ -1,0 +1,9 @@
+---
+- name: test
+  hosts: devtools_servers
+  become: yes
+  gather_facts: true
+
+  roles:
+  - tools
+  

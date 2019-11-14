@@ -1,0 +1,7 @@
+---
+- name: Setup & Control Nginx
+  hosts: devtools_servers
+  become: yes
+
+  roles:
+  - nginx

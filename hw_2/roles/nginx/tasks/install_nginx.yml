@@ -1,0 +1,10 @@
+---
+
+- name: Install nginx on RedHat systems
+  yum: name=nginx state=latest update_cache=yes
+  when: ansible_distribution == "RedHat"
+  tags: [ never, install ]
+- name: Install nginx on Ubuntu systems
+  apt: name=nginx update_cache=yes
+  when: ansible_distribution == "Ubuntu"
+  tags: [ never, install ]

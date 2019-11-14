@@ -1,0 +1,25 @@
+---
+- name: Copy index file to RedHat Nginx
+  template: src=index.j2 dest={{ redhat_nginx_www }}/index.html force=yes
+  when: ansible_distribution == "RedHat"
+  tags: [never, copyfiles ]
+
+- name: Copy index file to Ubuntu Nginx
+  template: src=index.j2 dest={{ ubnt_nginx_www }}/index.html force=yes 
+  when: ansible_distribution == "Ubuntu"
+  tags: [never, copyfiles ]
+
+- name: Copy Nginx config file to RedHat
+  template: src=nginx_redhat.j2 dest={{ nginx_cnf_folder }}/nginx.conf force=yes
+  tags: [never, copyfiles ]
+  when: ansible_distribution == "RedHat"
+  notify:
+    - Restart Nginx Redhat
+
+- name: Copy Nginx config file to Ubuntu
+  template: src=nginx_ubuntu.j2 dest={{ nginx_cnf_folder }}/nginx.conf force=yes
+  tags: [never, copyfiles ]
+  when: ansible_distribution == "Ubuntu"
+  notify:
+    - Restart Nginx Ubuntu
+

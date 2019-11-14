@@ -1,0 +1,6 @@
+---
+# defaults file for nginx
+
+redhat_nginx_www: /usr/share/nginx/html
+ubnt_nginx_www: /var/www/html
+nginx_cnf_folder: /etc/nginx

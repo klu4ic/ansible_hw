@@ -1,0 +1,6 @@
+---
+# tasks file for tools
+
+- include: install_tools.yml
+
+- include: remove_tools.yml

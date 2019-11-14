@@ -1,0 +1,19 @@
+
+PLAY [Setup & Control Nginx] ********************************************************************************************************************************
+
+TASK [Gathering Facts] **************************************************************************************************************************************
+ok: [aws_ubuntu]
+ok: [aws_redhat]
+
+TASK [nginx : Install nginx on RedHat systems] **************************************************************************************************************
+skipping: [aws_ubuntu]
+changed: [aws_redhat]
+
+TASK [nginx : Install nginx on Ubuntu systems] **************************************************************************************************************
+skipping: [aws_redhat]
+changed: [aws_ubuntu]
+
+PLAY RECAP **************************************************************************************************************************************************
+aws_redhat                 : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+aws_ubuntu                 : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+
